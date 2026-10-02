@@ -1,0 +1,67 @@
+<!doctype html>
+<html lang="id">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="theme-color" content="#0b74de">
+<link rel="manifest" href="manifest.json">
+<link rel="stylesheet" href="style.css">
+<title>AC Sehat</title>
+</head>
+<body>
+<header>
+  <div><h1>❄️ AC Sehat</h1><small>Service AC & Teknisi</small></div>
+  <button id="installBtn" class="secondary hidden">Pasang Aplikasi</button>
+</header>
+
+<nav>
+<button data-page="dashboard" class="active">🏠 Dashboard</button>
+<button data-page="jobs">🔧 Pekerjaan</button>
+<button data-page="customers">👥 Pelanggan</button>
+<button data-page="report">📊 Laporan</button>
+</nav>
+
+<main>
+<section id="dashboard" class="page active">
+  <div class="cards">
+    <div class="card"><b id="totalJobs">0</b><span>Total Service</span></div>
+    <div class="card"><b id="openJobs">0</b><span>Belum Selesai</span></div>
+    <div class="card"><b id="doneJobs">0</b><span>Selesai</span></div>
+    <div class="card"><b id="income">Rp0</b><span>Total Pendapatan</span></div>
+  </div>
+  <div class="panel"><h2>AC Sehat</h2><p>Kelola pekerjaan service AC, pelanggan, foto sebelum/sesudah, biaya dan status pekerjaan dari HP.</p>
+  <button onclick="showPage('jobs')">+ Buat Pekerjaan</button></div>
+</section>
+
+<section id="jobs" class="page">
+  <div class="toolbar"><h2>Data Pekerjaan</h2><button onclick="openJob()">+ Service Baru</button></div>
+  <input id="jobSearch" class="search" placeholder="Cari pelanggan / alamat / teknisi...">
+  <div id="jobList"></div>
+</section>
+
+<section id="customers" class="page">
+  <div class="toolbar"><h2>Pelanggan</h2><button onclick="openCustomer()">+ Pelanggan</button></div>
+  <div id="customerList"></div>
+</section>
+
+<section id="report" class="page">
+  <h2>Laporan</h2>
+  <div class="panel">
+    <label>Dari <input type="date" id="from"></label>
+    <label>Sampai <input type="date" id="to"></label>
+    <button onclick="renderReport()">Tampilkan</button>
+    <button class="secondary" onclick="printReport()">🖨️ Cetak / PDF</button>
+  </div>
+  <div id="reportResult"></div>
+</section>
+</main>
+
+<div id="modal" class="modal hidden">
+<div class="modalbox">
+<button class="close" onclick="closeModal()">×</button>
+<div id="modalContent"></div>
+</div>
+</div>
+<script src="app.js"></script>
+</body>
+</html>
